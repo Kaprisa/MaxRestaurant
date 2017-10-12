@@ -1,0 +1,49 @@
+@import "../_components/logo"
+@import "../_components/navigation"
+
+.header
+	svg
+		width: 20px
+		height: 20px
+		vertical-align: top
+		path
+			fill: #fff
+	&__line
+		display: flex
+		justify-content: space-between
+		align-items: center
+	&__top-line
+		background-color: $dark-color
+		padding: 7px 10%
+		font-size: 13px
+		color: #ddd
+	&__middle-line
+		background-color: rgba(#fff, .8)
+		padding: 20px 10%
+	&__book
+		cursor: pointer
+		span
+			line-height: 20px
+			vertical-align: top
+	&_big
+		background-image: url(/images/header_slide.jpg)
+		background-size: cover
+		background-position: 50% 50%
+		min-height: 100vh
+		.header__middle-line
+			background-color: rgba($dark-color, .8)
+		.navigation__link
+			color: #fff
+		.logo__text
+			color: #fff
+
+.phone
+	svg
+		width: 20px
+		height: 20px
+		path
+			fill: #fff
+	&__text
+		color: #ddd
+
+@import "../_components/search"

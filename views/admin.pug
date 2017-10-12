@@ -1,0 +1,25 @@
+extends layout
+
+include mixins/_breadcrumbs
+
+block content
+	main
+		- const page = 'events'
+		+breadcrumbs('Управление сайтом', { "name": "Главная", "href": "/index.html" }, { "name": "Управление", "href": "/admin.html" })
+		section.admin
+			.admin__wrapper
+				ul.tabs-navigation
+					li.tabs-navigation__item: a.tabs-navigation__link(class=( page === 'menu' ? 'tabs-navigation__link_active' : '') href="/admin/menu") Меню
+					li.tabs-navigation__item: a.tabs-navigation__link(class=( page === 'shop' ? 'tabs-navigation__link_active' : '') href="/admin/shop") Магазин
+					li.tabs-navigation__item: a.tabs-navigation__link(class=( page === 'blog' ? 'tabs-navigation__link_active' : '') href="/admin/blog") Блог
+					li.tabs-navigation__item: a.tabs-navigation__link(class=( page === 'events' ? 'tabs-navigation__link_active' : '') href="/admin/events") События
+				.admin__holder
+					case page
+						when 'menu'
+							include admin-tabs/menu
+						when 'shop'
+							include admin-tabs/shop
+						when 'blog'
+							include admin-tabs/blog
+						when 'events'
+							include admin-tabs/events

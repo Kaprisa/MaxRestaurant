@@ -1,0 +1,22 @@
+form.form(action="/book" method="POST")
+	.form-group
+		i.material-icons account_box
+		input.input#name(type="text" name="name" placeholder="Ваше имя" )
+	.form-group
+		i.material-icons email
+		input.input#email(type="email" name="email" placeholder="Ваш Email" )
+	.form-group
+		i.material-icons phone_iphone
+		input.input#phone(type="text" name="phone" placeholder="Ваш номер телефона" )
+	.form-group
+		i.material-icons event
+		input.input#subject(type="text" name="subject" placeholder="Тема вашего события" )
+	.form-group
+		i.material-icons room_service
+		input.input#table(type="text" name="table" placeholder="Выберите ваш стол" )
+	.form-group
+		i.material-icons access_time
+		input.input#time(type="text" name="time" placeholder="Выберите ваше время" )
+	.form-group.form-group_1
+		textarea.textarea#msg(type="text" name="msg" placeholder="Ваше сообщение" )
+	button.btn.btn_center(type="submit") Забронировать

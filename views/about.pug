@@ -1,0 +1,11 @@
+extends layout
+
+include mixins/_breadcrumbs
+
+block content
+	main
+		+breadcrumbs('О нас', { "name": "Главная", "href": "/index.html" }, { "name": "О нас", "href": "/about.html" })
+		include partials/about
+		include partials/counters
+		include partials/team
+		include partials/quotes

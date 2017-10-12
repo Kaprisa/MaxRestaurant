@@ -1,0 +1,27 @@
+extends layout
+
+include mixins/_breadcrumbs
+
+block content
+	main
+		- const page = 'contacts'
+		+breadcrumbs('Мой аккаунт', { "name": "Главная", "href": "/" }, { "name": "Аккаунт", "href": "/account" })
+		section.account
+			.account__wrapper
+				ul.tabs-navigation
+					li.tabs-navigation__item: a.tabs-navigation__link(class=( page === 'contacts' ? 'tabs-navigation__link_active' : '') href="/account/contacts") Контактная информация
+					li.tabs-navigation__item: a.tabs-navigation__link(class=( page === 'purse' ? 'tabs-navigation__link_active' : '') href="/account/purse") Кошелек
+					li.tabs-navigation__item: a.tabs-navigation__link(class=( page === 'bonus' ? 'tabs-navigation__link_active' : '') href="/account/bonus") Бонусная карта
+					li.tabs-navigation__item: a.tabs-navigation__link(class=( page === 'orders' ? 'tabs-navigation__link_active' : '') href="/account/orders") Заказы
+				.account__holder
+					case page
+						when 'contacts'
+							include account-tabs/contacts
+						when 'purse'
+							include account-tabs/purse
+						when 'bonus'
+							include account-tabs/bonus
+						when 'orders'
+							include account-tabs/orders
+			include partials/blog-side
+	include components/money-popup

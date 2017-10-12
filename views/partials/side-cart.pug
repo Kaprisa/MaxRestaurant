@@ -1,0 +1,15 @@
+.shop-cart
+	h4.side-title Корзина
+	- const cProducts = [{"ID": "1", "img": "1_small", "name": "Толстовка розовая", "price": "30"}, {"ID": "2", "img": "2_small", "name": "Постер розовый", "price": "14"}, {"ID": "3", "img": "3_small", "name": "Футболка черная", "price": "23"}, {"ID": "4", "img": "4_small", "name": "Футболка голубая", "price": "20"}]
+	ul.side-list
+		each product in cProducts
+			li.side-list__item: a.side-list__link(href=`/shop/${product.ID}`)
+				img.side-list__img(src=`/images/shop/${product.img}.jpg`)
+				span.side-list__name= product.name
+				span.side-list__price $ #{product.price}
+	.shop-cart__total
+		span.shop-cart__price-title Итоговая цена:
+		span.shop-cart__price 50
+	.shop-cart__links
+		a.btn(href="/cart") Корзина
+		a.btn(href="/checkout") Заказать

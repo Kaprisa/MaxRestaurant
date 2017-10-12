@@ -1,0 +1,58 @@
+@import "../_tools/common"
+@import "../_components/breadcrumbs"
+@import "../_components/question"
+@import "../_components/check-radio"
+@import "../_partials/blog-side"
+@import "../_partials/totals"
+@import "../animation/fade"
+
+.checkout
+	padding: 70px 10%
+	display: flex
+	justify-content: space-between
+	&__wrapper
+		flex-basis: 65%
+	&__title
+		margin-bottom: 15px
+		text-transform: uppercase
+		text-align: left
+		position: relative
+		&::after
+			content: ''
+			position: absolute
+			left: 0
+			bottom: 0
+			width: 50px
+			height: 3px
+			background-color: $accent-color
+	&__form
+		margin-bottom: 50px
+		.input
+			border: 1px solid rgba($foreground-color, .6)
+	&__order-table
+		width: 100%
+		text-align: center
+		border: 1px solid rgba($foreground-color, .7)
+		border-collapse: separate
+		border-spacing: 0
+		thead
+			font-weight: bold
+			text-transform: uppercase
+			text-align: center
+		td
+			border: 1px solid rgba($foreground-color, .4)
+			padding: 5px 0
+	&__coupon-form
+		display: none
+		margin-bottom: 50px
+		border: 1px solid rgba($accent-color, .4)
+		border-radius: 10px
+		text-align: center
+		padding: 10px
+		.form-group
+			display: inline-block
+			width: 50%
+			margin-right: 30px
+			margin-bottom: 0
+		.input
+			border: 1px solid rgba($foreground-color, .5)

@@ -1,0 +1,11 @@
+.shop-categories
+	h4.shop-categories__title.side-title Категории продуктов
+	- const sCategories = [{ "name": "Одежда", "href": "close" , "subitems": [{ "name": "Футболки", "href": "tshirts" }, { "name": "Толстовки", "href": "hoodies" }]}, { "name": "Музыка", "href": "music", "subitems": [{ "name": "Альбомы", "href": "albums" }, { "name": "Песни", "href": "songs" }] }, { "name": "Постеры", "href": "posters" }]
+	ul.shop-categories__list
+		each item in sCategories
+			li.shop-categories__item
+				a.shop-categories__link(href=`/shop/${item.href}`)= item.name
+				if item.subitems
+					ul.shop-categories__list.shop-categories__subitems
+						each sub in item.subitems
+							li.shop-categories__item: a.shop-categories__link(href=`/shop/${sub.href}`)= sub.name

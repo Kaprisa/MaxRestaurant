@@ -1,0 +1,26 @@
+extends layout
+
+include mixins/_breadcrumbs
+
+block content
+	main
+		+breadcrumbs('Магазин', { "name": "Главная", "href": "/index.html" }, { "name": "Магазин", "href": "/shop.html" })
+		section.shop
+			.shop__catalog.catalog
+				h2.shop__title Магазин
+				include components/sort
+				- const products = [{"img": "1", "ID": "1", "name": "Толстовка розовая", "price": "20"}, {"img": "2", "ID": "2", "name": "Толстовка серая", "price": "25"}, {"img": "3", "ID": "3", "name": "Толстовка черная", "price": "15"}, {"img": "4", "ID": "4", "name": "Постер серый", "price": "5"}, {"img": "5", "ID": "5", "name": "Постер розовый", "price": "4"}, {"img": "6", "ID": "6", "name": "Футболка черная", "price": "16"}]
+				.shop__products
+					each product in products
+						a.shop__item.shop-product(href=`/shop/products/${product.ID}`)
+							img.shop-product__img(src=`/public/images/shop/${product.img}.jpg`)
+							span.shop-product__name= product.name
+							span.shop-product__price $ #{product.price}
+							button.btn_small.btn#btn-add-to-cart(data-id=product.ID) Добавить в корзину
+					include components/pagination
+			aside.shop__side
+				include partials/shop-categories
+				include components/price-range
+				include partials/shop-top
+				include partials/side-cart
+					

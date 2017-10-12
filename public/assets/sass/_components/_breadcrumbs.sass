@@ -1,0 +1,67 @@
+/* .breadcrumbs
+	width: 100%
+	background-color: rgba(#ccc, .5)
+	svg path
+		fill: $accent-color
+		transition: fill .3s ease
+	&__item
+		display: inline-block
+		padding: 10px
+		position: relative
+		padding-right: 20px
+		color: $accent-color
+		transition: font-weight .3s ease
+		cursor: pointer
+		&:hover
+			font-weight: bold
+			svg path
+				fill: darken($accent-color, 15%)
+		&::after
+			content: '/'
+			line-height: 20px
+			position: absolute
+			right: 0
+			top: 50%
+			margin-top: -10px
+		&:last-child::after
+			display: none */
+
+.breadcrumbs
+	background-size: cover
+	background-position: 50% 50%
+	background-color: rgba(#000, .8)
+	background-blend-mode: overlay
+	padding: 100px 0
+	text-align: center
+	&__page
+		text-transform: uppercase
+		color: $accent-color
+		font-size: 30px
+	&__list
+		display: flex
+		justify-content: center
+		align-items: center
+	&__link
+		color: #fff
+		position: relative
+		padding-right: 20px
+		margin-right: 10px
+		font-size: 18px
+		line-height: 18px
+		&::after
+			content: '/'
+			font-size: 18px
+			position: absolute
+			right: 0
+			top: 0
+			color: #fff
+		&:hover
+			color: $accent-color
+	&__item
+		&:last-child
+			.breadcrumbs__link
+				color: $accent-color
+				margin-right: 0
+				padding-right: 0
+				&::after
+					display: none

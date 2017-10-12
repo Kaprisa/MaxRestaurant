@@ -1,0 +1,62 @@
+@import "../_tools/common"
+@import "../_components/breadcrumbs"
+
+.input, .textarea
+	border: 1px solid rgba($foreground-color, .5)
+
+.contacts
+	&__map
+		min-height: 60vh
+		margin-bottom: 50px
+	&-info
+		padding: 70px 15%
+		display: flex
+		justify-content: space-between
+		margin-bottom: 50px
+		&__item
+			flex-basis: 30%
+			padding: 0 5%
+			position: relative
+			&::after
+				content: ''
+				position: absolute
+				right: 0
+				top: 15%
+				width: 1px
+				height: 70%
+				border: 1px dashed $accent-color
+			&:last-child::after
+				display: none
+		&__text
+			display: block
+			text-align: center
+			font-size: 13px
+			opacity: .7
+		&__name
+			font-weight: bold
+			text-align: center
+			font-size: 20px
+			display: block
+			margin-bottom: 15px
+		&__icon
+			font-size: 70px
+			color: $accent-color
+			margin-bottom: 10px
+			display: block
+			text-align: center
+	&__title
+		font-size: 20px
+		text-transform: uppercase
+		margin-bottom: 20px
+		padding-bottom: 20px
+		position: relative
+		&::after
+			content: ''
+			position: absolute
+			bottom: 0
+			left: 0
+			width: 50px
+			height: 4px
+			background-color: $accent-color
+	&__connect
+		padding: 0 10%

@@ -1,0 +1,23 @@
+.shop-cart
+	margin-bottom: 50px
+	&__total
+		text-align: center
+		font-size: 14px
+		margin-bottom: 10px
+	&__price-title
+		font-weight: bold
+		color: #000
+		margin-right: 5px
+	&__price
+		position: relative
+		padding-left: 10px
+		&::after
+			content: '$'
+			position: absolute
+			left: 0
+	&__links
+		display: flex
+		justify-content: space-around
+		.btn
+			padding: 5px 10px
+			font-size: 12px

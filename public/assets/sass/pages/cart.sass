@@ -1,0 +1,58 @@
+@import "../_tools/common"
+@import "../_components/breadcrumbs"
+@import "../_partials/same-products"
+@import "../_partials/blog-side"
+@import "../_partials/totals"
+@import "../_components/counter"
+
+.cart
+	padding: 70px 10%
+	display: flex
+	justify-content: space-between
+	.counter
+		margin: 0 auto
+	&__wrapper
+		flex-basis: 65%
+	&__inner
+		border: 1px solid rgba($foreground-color, .8)
+		margin-bottom: 50px
+	&__totals
+		width: 40%
+		margin: 0 auto
+		border: 1px solid rgba($foreground-color, .8)
+		margin-bottom: 50px
+		padding: 15px 0
+	&__table
+		width: 100%
+		text-align: center
+		border-collapse: separate
+		border-spacing: 0
+		td
+			border: 1px solid rgba($foreground-color, .5)
+			padding: 10px 0
+	&__product-photo
+		width: 70px
+		height: 70px
+		border-radius: 50%
+		vertical-align: middle
+	&__product-delete
+		cursor: pointer
+	&__bottom-line
+		display: flex
+		align-items: center
+		padding: 15px
+		.btn
+			margin-right: 15px
+			height: 40px
+	&__coupon
+		border: 1px solid $accent-color
+		flex-basis: 30%
+		margin-right: 10px
+		position: relative
+		.material-icons
+			position: absolute
+			left: 10px
+			top: 50%
+			line-height: 30px
+			margin-top: -15px
+			opacity: .7

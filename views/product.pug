@@ -1,0 +1,71 @@
+extends layout
+
+include mixins/_breadcrumbs
+
+block content
+	main
+		+breadcrumbs('Продукт', { "name": "Главная", "href": "/index.html" }, { "name": "Магазин", "href": "/shop.html" }, { "name": "Продукт", "href": "/product.html" })
+		section.product
+			- const product = { "ID": "1", "img": "/shop/6", "name": "Футболка черная", "price" : "20" }
+			.product__wrapper
+				.product__inner
+					.product__view
+						img.product__img(src=`/public/images${product.img}.jpg`)
+					.product__info
+						h4.product__name= product.name
+						span.product__price $ #{product.price}
+						p.product__desc Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Имени гор приставка города не решила жаренные вершину точках то, это его единственное! Встретил, скатился. Подзаголовок щеке они большого! Маленькая!
+						.product__cart-line
+							include components/counter
+							button.btn.btn_small#btn-add-to-cart Добавить в корзину
+							button.btn.btn_small.btn-show-reviews-popup Добавить отзыв
+						.product-categories
+							- const pCategories = [{ "name": "Одежда", "ID": "1" }, { "name": "Футболка" , "ID": "2" }]
+							span.product-categories__title Категории
+							ul.product-categories__list
+								each category in pCategories
+									li.product-categories__item: a.product-categories__link(href=`/shop/categories/${category.ID}`)= category.name
+				.tabs.product__tabs
+					ul.tabs-nav
+						//li.tabs-nav__item.tabs-nav__item_active Характеристики
+						li.tabs-nav__item.tabs-nav__item_active Описание
+						li.tabs-nav__item Отзывы (#{ reviews ? reviews.length : 0 })
+					//.tabs__item.tabs__item_active
+					.tabs__item.tabs__item_active
+							p.product__desc Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Дорогу города приставка пунктуация живет рыбного своего, которой гор, переписывается бросил они. Всемогущая предупредила правилами свой собрал он последний ручеек.
+					.tabs__item.comments
+						.comments__item
+							img.comments__img(src="/public/images/photo_default.png")
+							p.comments__text  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рыбными от всех дал, свой ведущими, сбить то текст ipsum дорогу заголовок своего предупредила языком вопроса страна имеет точках! Меня, возвращайся!
+						.comments__item
+							img.comments__img(src="/public/images/photo_default.png")
+							p.comments__text  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рыбными от всех дал, свой ведущими, сбить то текст ipsum дорогу заголовок своего предупредила языком вопроса страна имеет точках! Меня, возвращайся!
+				.product__same-products.same-products
+					h3.title Вам может также понравиться
+					- const products = [{"img": "1", "ID": "1", "name": "Толстовка розовая", "price": "20"}, {"img": "2", "ID": "2", "name": "Толстовка серая", "price": "25"}, {"img": "3", "ID": "3", "name": "Толстовка черная", "price": "15"}]
+					.same-products__list
+						each product in products
+							a.same-products__item.shop-product(href=`/shop/products/${product.ID}`)
+								img.shop-product__img(src=`/public/images/shop/${product.img}.jpg`)
+								span.shop-product__name= product.name
+								span.shop-product__price $ #{product.price}
+								button.btn_small.btn#btn-add-to-cart(data-id=product.ID) Добавить в корзину
+			aside.product__side
+				include partials/shop-categories
+				include partials/shop-top
+				include partials/side-cart
+	.popup.reviews-popup
+		.popup__content
+			h3.reviews-popup__title.title Отзыв
+			.reviews-popup__stars
+				span.star(data-star="5")
+				span.star(data-star="4")
+				span.star(data-star="3")
+				span.star(data-star="2")
+				span.star(data-star="1")
+			form#review-form(action=`/reviews/${product.ID}`)
+				textarea.textarea(placeholder="Ваш отзыв")
+				input.input#name(type="text" name="name" placeholder="Ваше имя")
+				input.input#email(type="email" name="email" placeholder="Ваш Email")
+				button.btn.btn_small.btn_center.reviews-popup__btn Отправить отзыв
+			.btn_hide-popup

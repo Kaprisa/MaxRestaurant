@@ -1,0 +1,28 @@
+include ../mixins/_toggle-items
+.events-editor
+	form.shop-editor__form.form(method="POST" action="/event/edit")
+		.form-group
+			i.material-icons bubble_chart
+			input.input#name(type="text" name="name" placeholder="Название события")
+		.form-group
+			i.material-icons event
+			input.input#subject(type="text" name="subject" placeholder="Тема события" )
+		.form-group
+			i.material-icons add_a_photo
+			label.label_file 
+				span Фото
+				input.input_file#photo(type="file" name="photo" placeholder="Фото")
+		.form-group
+			i.material-icons access_time
+			input.input#time(type="text" name="time" placeholder="Время проведения")
+		.form-group.form-group_1
+			i.material-icons location_on
+			input.input#location(type="text" name="location" placeholder="Адрес проведения" )
+		.form-group.form-group_1
+			textarea.textarea#desc(name="desc" placeholder="Описание")
+		+toggleItems('categories', 'Категория')
+		if event
+			button.btn.btn_small Сохранить
+			button.btn.btn_small(type="button")#delete-article Удалить
+		else
+			button.btn.btn_small.btn_center Сохранить

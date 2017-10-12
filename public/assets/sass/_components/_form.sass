@@ -1,0 +1,55 @@
+.form
+	display: flex
+	flex-wrap: wrap
+	justify-content: space-between
+	&-group
+		flex-basis: 47%
+		position: relative
+		margin-bottom: 20px
+		&_1
+			flex-basis: 100%
+		.material-icons
+			position: absolute
+			left: 10px
+			//top: 50%
+			top: 12.5px
+			line-height: 30px
+			//margin-top: -15px
+			opacity: .7
+
+.input, .textarea, .select
+	box-sizing: border-box
+	padding: 10px
+	font-size: 14px
+	width: 100%
+	padding-left: 50px
+
+.input, .select
+	height: 55px
+
+.textarea
+	min-height: 150px
+
+.label
+	text-align: right
+	color: #333
+	font-weight: bold
+	font-size: 14px
+	&_time
+		text-align: left
+
+.input_file
+	opacity: 0
+	position: absolute
+
+.label_file
+	@extend .input
+	cursor: pointer
+	display: block
+	padding-top: 18px
+	padding-bottom: 18px
+	span
+		vertical-align: baseline
+
+
+	

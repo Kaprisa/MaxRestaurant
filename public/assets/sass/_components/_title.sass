@@ -1,0 +1,33 @@
+.title
+	margin-bottom: 30px
+	padding-bottom: 10px
+	position: relative
+	font-family: "Raleway", sans-serif
+	text-align: center
+	&__text
+		display: block
+		font-size: 35px
+		&_accent
+			color: $accent-color
+		&_font-garden
+			font-family: "GardensCRegular", sans-serif
+		&_white
+			color: #ddd
+	&_with-line
+		text-align: left
+		&::after
+			content: ''
+			position: absolute
+			bottom: 0
+			left: 0
+			height: 3px
+			width: 30%
+			background-color: $accent-color
+
+.side-title
+	text-transform: uppercase
+	opacity: .8
+	font-size: 14px
+	margin-bottom: 10px
+
+	

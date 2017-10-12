@@ -1,0 +1,50 @@
+.input
+	&_radio, &_check
+		position: absolute
+		top: 0
+		left: 0
+		visibility: hidden
+		&::before, &::after
+			content: ''
+			position: absolute
+			top: 0
+		&::before
+			visibility: visible
+			border: 2px solid $accent-color
+			width: 20px
+			height: 20px
+			left: 0
+		&::after
+			visibility: hidden
+		&:checked
+			&::after
+				visibility: visible
+	&_radio
+		&::before, &::after
+			border-radius: 50%
+		&::after
+			background-color: $accent-color
+			width: 14px
+			height: 14px
+			left: 5px
+			margin-top: 5px
+	&_check
+		&::before
+			border-radius: 5px
+		&::after
+			border: 4px solid $accent-color
+			width: 4px
+			height: 12px
+			border-bottom-color: transparent
+			border-right-color: transparent
+			transform: rotate(-125deg)
+			top: -2px
+			left: 7px
+
+.label_for-check-radio
+	padding-left: 30px
+	text-transform: uppercase
+	vertical-align: middle
+	position: relative
+
+

@@ -1,0 +1,14 @@
+extends layout
+
+include mixins/_title
+include mixins/_breadcrumbs
+
+block content
+	- const categories = [{ "name": "Завтрак", "desc": "Очень хорошие завтраки" }, { "name": "Обед", "desc": "Горячее и вкусное" }, { "name": "Ужин", "desc": "Изысканные блюда" }]
+	main.menu
+		+breadcrumbs('Меню', { "name": "Главная", "href": "/index.html" }, { "name": "Меню", "href": "/menu.html" })
+		each category in categories
+			section.menu__section
+				+title(category.desc, category.name)
+				include components/menu-list
+		include partials/booking

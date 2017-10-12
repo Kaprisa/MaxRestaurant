@@ -1,0 +1,9 @@
+section.services
+	include ../mixins/_title
+	+title('Услуги', 'Наша специализация')
+	- const services = [{ "img": "srv1", "name": "Бутерброды", "href": "sandwiches"}, { "img": "srv2", "name": "Пицца", "href": "pizza"}, { "img": "srv3", "name": "Блинчики", "href": "pancakes"}, { "img": "srv4", "name": "Тако", "href": "tacos"}]
+	ul.services__list
+		each service in services
+			li.services__item: a.services__link(href=`/catalog/${service.href}`)
+				img.services__img(src=`/images/${service.img}.png`)
+				span.services__name= service.name

@@ -1,0 +1,7 @@
+.subscribe(style="background-image: url(/images/newsletter-bg.jpg)")
+	h2.title.subscribe__title Подписаться на новости
+	p.subscribe__text Зарегистрируйтесь, через ваш email, чтобы получать свежие рассылки о наших событиях
+	form.subscribe__form(action="/register" method="POST")
+		i.material-icons.subscribe__icon email
+		input.input.subscribe__input#email(type="text" name="email" placeholder="email")
+		button.subscribe__btn.btn Зарегистрироваться

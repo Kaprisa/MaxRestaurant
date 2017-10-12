@@ -1,0 +1,31 @@
+.btn
+	border: none
+	outline: none
+	display: inline-block
+	text-transform: uppercase
+	font-family: "Raleway", sans-serif
+	background-color: $accent-color
+	padding: 15px 30px
+	color: #fff
+	font-weight: bold
+	font-size: 14px
+	line-height: 20px
+	transition: (background-color .3s ease, color .3s ease)
+	cursor: pointer
+	&:hover
+		background-color: darken($accent-color, 5%)
+	&_center
+		display: block
+		margin: 0 auto
+	&_transparent
+		background-color: transparent
+		color: #777
+		border: 1px solid #777
+		&:hover
+			background-color: #777
+			color: #fff
+	&_small
+		padding: 7px 10px
+		font-size: 10px
+
+

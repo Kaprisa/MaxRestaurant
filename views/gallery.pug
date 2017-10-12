@@ -1,0 +1,27 @@
+extends layout
+
+include mixins/_breadcrumbs
+include mixins/_title
+
+block content
+	main
+		+breadcrumbs('Галлерея', { "name": "Главная", "href": "/index.html" }, { "name": "Галлерея", "href": "/gallery.html" })
+		section.gallery
+			+title('Высокое исскусство', 'Галлерея')
+			- const categories = [{ "name": "Завтрак", "data": "breakfast" }, { "name": "Кофе", "data": "coffee" }, { "name": "Ужин", "data": "dinner" }, { "name": "Обед", "data": "lunch" }]
+			ul.gallery-categories
+				li.gallery-categories__item.gallery-categories__item_active(data-category="all") Все
+				each item in categories
+					li.gallery-categories__item(data-category=item.data)= item.name
+			- const photos = [{ "name": "1", "categories": "breakfast dinner nonvegetarian" }, { "name": "2", "categories": "coffee" }, { "name": "3", "categories": "dinner" }, { "name": "4", "categories": "coffee breakfast" }, { "name": "5", "categories": "dinner lunch" }, { "name": "6", "categories": "nonvegetarian dinner" }, { "name": "7", "categories": "nonvegetarian" }, { "name": "8", "categories": "dinner breakfast coffee" }, { "name": "9", "categories": "breakfast lunch" }, { "name": "10", "categories": "breakfast lunch coffee" }, { "name": "11", "categories": "nonvegetarian breakfast dinner" }, { "name": "12", "categories": "breakfast" }]
+			.gallery__photos
+				each photo in photos
+					a.gallery__item(href="#" data-categories=photo.categories)
+						img.gallery__img(src=`/public/images/gallery/${photo.name}.jpg`)
+						i.material-icons.gallery__icon monochrome_photos
+	.popup.gallery-popup
+		.popup__content.popup__content_photo
+		span.btn_hide-popup
+		.arrows
+			span.arrows__left
+			span.arrows__right

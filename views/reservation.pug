@@ -1,0 +1,13 @@
+extends layout
+
+include mixins/_breadcrumbs
+include mixins/_title
+
+block content
+	main
+		+breadcrumbs('Бронирование', { "name": "Главная", "href": "/index.html" }, { "name": "Бронирование", "href": "/reservation.html" })
+		section.reservation(style="background-image: url(/public/images/reservation.png)")
+			+title('Выберите ваш стол', 'Бронирование')
+			include components/reservation-form
+		include partials/subscribe
+		include partials/services

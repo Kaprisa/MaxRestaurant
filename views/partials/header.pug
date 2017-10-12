@@ -1,0 +1,56 @@
+include ../mixins/_search
+
+header.header(class=( name && name === 'index' ? 'header_big' : ''))
+	.header__line.header__top-line
+		.header__phone.phone
+			include ../../public/images/icons/phone.svg
+			span.phone__text +7 (924) 540 64 64
+		.header__book
+			include ../../public/images/icons/calendar.svg
+			span Забронировать сейчас
+		include ../components/social
+		.header__user-block.user-block
+			if user
+				a.user-block__link(href="/profile") Профиль
+			else
+				a.user-block__link.js-show-user-popup(href="#") Вход
+				a.user-block__link.js-show-user-popup(href="#") Регистрация
+		+search('Поиск по сайту')
+	.header__line.header__middle-line
+		include ../components/logo
+		include ../components/navigation
+
+.popup.book-popup
+	.popup__content
+		h4.book-popup__title Заказать сейчас
+		include ../components/reservation-form
+		span.btn_hide-popup
+
+.popup.user-auth-popup
+	.popup__content
+		include ../components/social
+		h3.user-auth-popup__title Регистрация
+		form.form#auth-form.user-auth-popup__form
+			.form-group.form-group_1
+				i.material-icons account_box
+				input.input#username(name="username" type="username", placeholder="Ваше имя пользователя")
+			.form-group.form-group_1
+				i.material-icons email
+				input.input#email(name="email" type="email", placeholder="Ваш E-Mail")
+			.form-group.form-group_1
+				i.material-icons vpn_key
+				input.input#password(name="password" type="password", placeholder="Ваш пароль")
+			.form-group.form-group_1
+				i.material-icons vpn_key
+				input.input#confirmPassword(name="confirmPassword" type="password", placeholder="Подтвердите пароль")
+			button.btn.btn_small.btn_center.user-auth-popup__btn Войти
+		.btn_hide-popup
+		a.user-auth-popup__link(href="#") Забыли пароль?
+		form.form.user-auth-popup__forgot-form#forgot-form(method="POST", action="/account/forgot")
+			h3.title Восстановление пароля
+			.form-group.form-group_1
+				i.material-icons email
+				input.input#email(name="email" type="email", placeholder="Ваш E-Mail")
+			button.btn.btn_small.btn_center Восстановить
+
+

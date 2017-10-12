@@ -1,0 +1,104 @@
+@import "../_tools/common"
+@import "../_components/breadcrumbs"
+@import "../_components/shop-categories"
+@import "../_components/side-list"
+@import "../_components/counter"
+@import "../_components/tabs"
+@import "../_components/comments"
+@import "../_partials/same-products"
+@import "../_partials/shop-cart"
+
+.shop-top
+	margin-bottom: 50px
+
+.product
+	padding: 70px 10%
+	display: flex
+	justify-content: space-between
+	&__wrapper
+		flex-basis: 65%
+	&__inner
+		display: flex
+		justify-content: space-between
+		margin-bottom: 30px
+	&__side
+		flex-basis: 20%
+	&__view
+		flex-basis: 39%
+	&__img
+		width: 100%
+	&__info
+		flex-basis: 59%
+	&__name
+		text-transform: uppercase
+		font-weight: bold
+		margin-bottom: 20px
+		padding-bottom: 20px
+		position: relative
+		font-size: 20px
+		&::after
+			content: ''
+			position: absolute
+			bottom: 0
+			left: 0
+			width: 35px
+			height: 4px
+			background-color: $accent-color
+	&__price
+		font-size: 20px
+		font-weight: bold
+		margin-bottom: 15px
+		display: block
+	&__desc
+		font-size: 14px
+		opacity: .7
+		margin-bottom: 20px
+	&__cart-line
+		display: flex
+		align-items: center
+		margin-bottom: 35px
+		.btn
+			margin-right: 10px
+	&-categories
+		&__title
+			opacity: .7
+			color: $accent-color
+		&__list
+			display: flex
+			flex-wrap: wrap
+		&__item
+			margin-right: 10px
+			padding: 2px 4px
+			font-size: 11px
+			border: 1px solid $accent-color
+			border-radius: 5px
+		&__link
+			transition: color .3s ease
+			&:hover
+				color: $accent-color
+	&__tabs
+
+.reviews-popup
+	&__title
+		margin-bottom: 10px
+		padding: 0
+	.input, .textarea
+		border: 1px solid rgba($foreground-color, .5)
+		margin-bottom: 10px
+		padding: 5px
+	.input
+		height: 35px
+	&__stars
+		justify-content: center
+		display: flex
+		flex-direction: row-reverse
+		margin-bottom: 15px
+		.star
+			&::before
+				content: '★'
+			&:hover, &_active
+				color: $accent-color
+				~ span
+					color: $accent-color
+
+

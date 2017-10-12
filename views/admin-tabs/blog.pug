@@ -1,0 +1,25 @@
+include ../mixins/_toggle-items
+.blog-editor
+	form.shop-editor__form.form(method="POST" action="/article/edit")
+		.form-group.form-group_1
+			i.material-icons bubble_chart
+			input.input#name(type="text" name="name" placeholder="Название статьи")
+		.form-group.form-group_1
+			i.material-icons add_a_photo
+			label.label_file 
+				span Фото
+				input.input_file#photo(type="file" name="photo" placeholder="Фото")
+		.form-group.form-group_1
+			//i.material-icons format_quote
+			textarea.textarea#quote(name="quote" placeholder="Цитата")
+		.form-group.form-group_1
+			//i.material-icons message
+			textarea.textarea#desc(name="desc" placeholder="Описание")
+		- const article = 1
+		+toggleItems('categories', 'Категория')
+		+toggleItems('tags', 'Тег')
+		if article
+			button.btn.btn_small Сохранить
+			button.btn.btn_small(type="button")#delete-article Удалить
+		else
+			button.btn.btn_small.btn_center Сохранить

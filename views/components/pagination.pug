@@ -1,0 +1,10 @@
+.pagination
+	- const [ page, pages ] = [ 2, 3 ]
+	.pagination__pages
+		a.pagination__link(href=`/blog/pages/${page - 1}`) <
+		- for (let i = 1 ; i < pages + 1 ; i ++) {
+			a.pagination__link(class=( i == page ? 'pagination__link_active' : '') href=`/blog/pages/${i}`)= i
+		-	}
+		a.pagination__link(href=`/blog/pages/${Number(page)+1}`) >
+	.pagination__info
+		span.pagination__text Страница #{page} из #{pages}

@@ -1,0 +1,42 @@
+@import "../_tools/common"
+@import "../_components/breadcrumbs"
+@import "../_components/calendar"
+@import "../_components/special"
+@import "../_components/quote"
+@import "../_components/comments"
+@import "../_components/comments-form"
+@import "../_partials/article"
+@import "../_partials/blog-side"
+
+.article
+	&__wrapper
+		flex-basis: 65%
+	&__inner
+		display: flex
+		justify-content: space-between
+		padding: 70px 10%
+	&-tags, &-categories
+		margin: 30px 0
+		&__title
+			display: block
+			font-size: 15px
+			text-transform: uppercase
+			opacity: .9
+			margin-bottom: 7px
+		&__list
+			display: flex
+		&__item
+			margin-right: 7px
+			margin-bottom: 10px
+		&__link
+			opacity: .65
+			font-size: 14px
+			border: 1px solid #777
+			padding: 10px
+			text-transform: uppercase
+			transition: (border-color .3s ease, color .3s ease, background-color .3s ease)
+			&:hover
+				border-color: transparent
+				color: #fff
+				background-color: $accent-color
+		

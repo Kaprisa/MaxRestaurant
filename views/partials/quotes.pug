@@ -1,0 +1,19 @@
+section.customers-quotes.section_bg(style="background-image: url(/images/testimonial-bg.jpg)")
+	include ../mixins/_title
+	//+title('Наши клиенты говорят', 'Цитаты')
+	h2.title
+		span.title__text_accent.title__text_font-garden Наши клиенты говорят
+		span.title__text.title__text_white Цитаты
+		img.title__img(src="/images/surprize-chef.png")
+	- const quotes = [{ "name": "Алина Мармеладова" }, { "name": "Иван Иванов" }, { "name": "Анастасия Андреева" }, { "name": "Илья Петров" }]
+	.customers-quotes__wrapper
+		ul.customers-quotes__list
+			each quote in quotes
+				li.customers-quotes__item
+					p.customers-quotes__text  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Текстами запятых дорогу силуэт живет, первую города всеми переписали диких оксмокс строчка, все жизни текста lorem вскоре меня рот скатился.
+					i.material-icons.customers-quotes__icon format_quote
+					span.customers-quotes__name - #{quote.name}
+	ul.customers-quotes__nav.circle-nav
+		- for (let i = 0 ; i < quotes.length ; i ++) {
+			li.circle-nav__item
+		-	}

@@ -1,0 +1,42 @@
+@import "../_components/logo"
+@import "../_components/social"
+
+.footer
+	&__top
+		padding: 70px 10%
+		display: flex
+		justify-content: space-between
+		font-size: 14px
+	&__about, &__working-time
+		flex-basis: 25%
+	&__navigation, &__menu
+		flex-basis: 20%
+		a
+			transition: color .3s ease
+			&:hover
+				color: $accent-color
+	&__title
+		text-transform: uppercase
+		font-family: "Raleway", sans-serif
+		font-size: 18px
+		position: relative
+		padding-bottom: 15px
+		margin-bottom: 20px
+		&::after
+			content: ''
+			position: absolute
+			bottom: 0
+			left: 0
+			height: 2px
+			width: 30px
+			background-color: $accent-color
+	&__text
+		margin-bottom: 20px
+	&__copyrights
+		background-color: #333
+		color: #fff
+		font-size: 13px
+		text-align: center
+		padding: 15px 0
+	table
+		width: 100%

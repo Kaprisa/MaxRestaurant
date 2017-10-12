@@ -1,0 +1,104 @@
+@import "../animation/fade"
+@import "../animation/slide"
+
+.popup
+  display: none
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 400
+  background-color: rgba(#000, .85)
+  &__content
+  	position: absolute
+  	top: 50%
+  	left: 50%
+  	transform: translate(-50%, -50%)
+  	background-color: #fff
+  	padding: 30px 15px
+  	&_photo
+  		padding: 0
+  		width: 263x
+  		height: 290px
+			img
+				width: 263px
+				height: 290px
+
+.gallery-popup
+	.btn_hide-popup
+		top: calc(50% - 170px)
+		right: calc(50% - 120px)
+
+.dynamic-popup
+	&__content
+		position: absolute
+		top: 35%
+		left: 35%
+		right: 35%	
+		padding: 30px
+		border-radius: 5px
+		background-color: $background-color
+		text-align: center
+
+.book-popup
+	.popup__content
+		padding: 0
+	&__title
+		border-bottom: 1px solid $foreground-color
+		padding: 10px
+		margin-bottom: 10px
+	.form
+		padding: 10px
+	.input, .textarea
+		border: 1px solid rgba($foreground-color, .5)
+
+.user-auth-popup
+	.input, .textarea
+		border: 1px solid rgba($foreground-color, .5)
+	.social
+		text-align: center
+	&__title
+		text-align: center
+		margin-bottom: 10px
+	&__form
+		margin-bottom: 15px
+	&__link
+		display: block
+		text-align: center
+		font-size: 14px
+	&__auth-form
+		z-index: 100
+	&__forgot-form
+		display: none
+	&__error
+		width: 90%
+		box-sizing: border-box
+		margin: 0 auto
+		margin-bottom: 5px
+		border: 2px solid #f22
+		border-radius: 20px
+		padding: 5px
+		font-size: 14px
+		text-align: center
+
+.btn_hide-popup
+	position: absolute
+	top: -20px
+	right: 0
+	&::before, &::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 20px
+		height: 3px
+		background-color: #aaa
+		cursor: pointer
+		transition: background-color .3s ease
+		&:hover
+			background-color: #fff
+	&::before
+		transform: rotate(45deg)
+	&::after
+		transform: rotate(-45deg)

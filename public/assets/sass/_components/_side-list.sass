@@ -1,0 +1,27 @@
+.side-list
+	&__link
+		display: flex
+		flex-direction: column
+		flex-wrap: wrap
+		height: 70px
+		margin-bottom: 10px
+		justify-content: center
+		align-items: flex-start
+		&:hover
+			.shop-top__img
+				border-color: $accent-color
+			.shop-top__name
+				color: $accent-color
+	&__img
+		flex-basis: 100%
+		border-radius: 50%
+		height: 70px
+		width: auto
+		margin-right: 10px
+		border: 1px solid transparent
+		transition: border-color .3s ease
+	&__name
+		flex-basis: 20px
+		transition: color .3s ease
+	&__price
+		flex-basis: 20px

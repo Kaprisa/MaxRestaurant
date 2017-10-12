@@ -1,0 +1,16 @@
+extends layout
+
+include mixins/_breadcrumbs
+
+block content
+	main.blog
+		+breadcrumbs('Блог', { "name": "Главная", "href": "/index.html" }, { "name": "Блог", "href": "/blog.html" })
+		.blog__inner
+			- const articles = [ 1, 2, 3, 4, 5 ]
+			.blog__articles
+				each article in articles
+					include partials/article
+				include components/pagination
+			include partials/blog-side
+
+

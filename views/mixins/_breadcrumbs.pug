@@ -1,0 +1,6 @@
+mixin breadcrumbs(page, ...items)
+	.breadcrumbs(style="background-image: url(/images/page-banner.jpg)")
+		h5.breadcrumbs__page= page
+		ul.breadcrumbs__list
+			each item in items
+				li.breadcrumbs__item: a.breadcrumbs__link(href=`/${item.href}.html`)= item.name

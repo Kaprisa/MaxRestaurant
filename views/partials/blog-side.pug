@@ -1,0 +1,27 @@
+include ../mixins/_search
+
+aside.blog__side
+	+search('Найти статью')
+	.blog-categories
+		h4.blog-categories__title Категории
+		- const categories = [{ "href": "article.html", "name": "Все о рыбных блюдах"}, { "href": "article.html", "name": "Польза здорового питания"}, { "href": "article.html", "name": "Идеи невероятных завтраков"}, { "href": "article.html", "name": "Кухни мира"}, { "href": "article.html", "name": "История ресторана"}]
+		ul.blog-categories__list
+			each category in categories
+				li.blog-categories__item: a.blog-categories__link(href=`/blog/${category.href}`)= category.name
+	.blog-recent
+		h4.blog-recent__title Последние статьи
+		- const recent = [{ "img": "blog2_small", "href": "article.html", "name": "Невероятная паста с томатами", "date": "01/10/2017"}, { "img": "blog3_small", "href": "article.html", "name": "День азиатской кухни", "date": "01/10/2017"}, { "img": "blog4_small", "href": "article.html", "name": "Оформление летних столов", "date": "01/10/2017"}]
+		ul.blog-recent__list
+			each item in recent
+				li.blog-recent__item: a.blog-recent__link(href=`/blog/article/${item.href}`)
+					img.blog-recent__img(src=`public/images/blog/${item.img}.jpg`)
+					span.blog-recent__name= item.name
+					span.blog-recent__date= item.date
+	.calendar__holder
+	include ../components/special
+	.blog__tags.tags
+		h4.tags__title Теги
+		- const tags = [{ "href": "meet", "name": "Мясо"}, { "href": "fish", "name": "Рыба"}, { "vegetables": "meet", "name": "Овощи"}, { "href": "drinks", "name": "Напитки"}]
+		ul.tags__list
+			each tag in tags
+				li.tags__item: a.tags__link(href=`/blog/tags/${tag.href}`)= tag.name

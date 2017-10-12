@@ -1,0 +1,54 @@
+.events
+	padding: 70px 10%
+	&__list
+		display: flex
+		justify-content: space-between
+	&__item
+		background-repeat: no-repeat
+		background-size: cover
+		background-position: 50% 50%
+		height: 532px
+		position: relative
+		flex-basis: 30%
+		width: 30%
+		overflow: hidden
+		&:hover
+			>.events__content
+				bottom: 0
+	&__content
+		position: absolute
+		text-align: center
+		padding: 20px 20%
+		bottom: -80px
+		left: 0
+		right: 0	
+		background-color: rgba(#000, .8)
+		color: #fff
+		transition: bottom .5s ease
+	&__name
+		position: relative
+		font-weight: bold
+		font-family: "Raleway", sans-serif
+		padding-bottom: 15px
+		margin-bottom: 20px
+		font-size: 20px
+		line-height: 20px
+		min-height: 40px
+		&::after
+			content: ''
+			position: absolute
+			bottom: 0
+			left: 40%
+			right: 40%
+			height: 3px
+			background-color: $accent-color
+	&__desc
+		font-size: 13px
+		margin-bottom: 10px
+	&__datetime
+		color: $accent-color
+		font-size: 13px
+		margin-bottom: 50px
+		.material-icons
+			font-size: 13px
+			margin-right: 5px

@@ -1,0 +1,48 @@
+.price-range
+	margin-bottom: 30px
+	&__range
+		position: relative
+		width: 100%
+		height: 5px
+		background-color: #777
+		opacity: .5
+		margin-bottom: 20px
+	&__control
+		position: absolute
+		top: -3.5px
+		width: 12px
+		height: 12px
+		background-color: $accent-color
+		&:first-child
+			left: 0
+		&:last-child
+			right: 0
+	&__bottom-line
+		display: flex
+		justify-content: space-between
+		align-items: center
+	&__prices
+		font-size: 12px
+	&__price
+		position: relative
+		padding-left: 10px
+		&::after
+			content: '$'
+			position: absolute
+			left: 0
+		&:last-child
+			padding-left: 30px
+			display: inline-block
+			&::after
+				left: 20px
+			&::before
+				content: ''
+				position: absolute
+				top: 50%
+				left: 5px
+				width: 10px
+				height: 1px
+				background-color: $foreground-color
+	&__prices-title
+		opacity: .55
+		margin-right: 5px

@@ -1,0 +1,29 @@
+.search
+	position: relative
+	svg
+		position: absolute
+		right: 13px
+		top: 15px
+		width: 13px
+		height: 13px
+		path
+			fill: #777
+	&__input
+		padding: 15px 13px
+		width: 100%
+		background-color: #eee
+		font-style: italic
+		box-sizing: border-box
+		color: #777
+	&__results
+		background-color: #fff
+		width: 100%
+		position: absolute
+		z-index: 100
+		box-shadow: 0 0 6px #000
+	&__link
+		display: block
+		text-align: center
+		border-bottom: 1px solid $foreground-color
+		&_active
+			background-color: #ece

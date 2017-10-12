@@ -1,0 +1,40 @@
+extends layout
+
+include mixins/_breadcrumbs
+
+block content
+	main
+		+breadcrumbs('Наши контакты', { "name": "Главная", "href": "/index.html" }, { "name": "Контакты", "href": "/contacts" })
+		section.contacts-info
+			.contacts-info__item
+				i.material-icons.contacts-info__icon phone
+				span.contacts-info__name Телефон
+				span.contacts-info__text 3 99 99 95
+				span.contacts-info__text +7 (924) 015 26 25
+			.contacts-info__item
+				i.material-icons.contacts-info__icon email
+				span.contacts-info__name Email
+				span.contacts-info__text max@gmail.com
+			.contacts-info__item
+				i.material-icons.contacts-info__icon location_on
+				span.contacts-info__name Адрес
+				span.contacts-info__text улица Савушкина 32, Санкт-Петербург, Россия
+		#map.contacts__map
+		section.contacts__connect
+			h3.contacts__title Свяжитесь с нами
+			form.contacts__form.form(method="POST" action="/contact")
+				.form-group
+					i.material-icons account_box
+					input.input#name(type="text" name="name" placeholder="Ваше имя" )
+				.form-group
+					i.material-icons email
+					input.input#email(type="email" name="email" placeholder="Ваш Email" )
+				.form-group
+					i.material-icons phone_iphone
+					input.input#phone(type="text" name="phone" placeholder="Ваш номер телефона" )
+				.form-group
+					i.material-icons subject
+					input.input#subject(type="text" name="subject" placeholder="Тема вашего обращения" )
+				.form-group.form-group_1
+					textarea.textarea#msg(type="text" name="msg" placeholder="Ваше сообщение" )
+				button.btn.btn_center.btn_small(type="submit") Отправить

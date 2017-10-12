@@ -1,0 +1,56 @@
+.toggle-items
+	flex-basis: 100%
+	display: flex
+	justify-content: space-between
+	position: relative
+	margin-bottom: 30px
+	&__icon
+		position: absolute
+		opacity: .7
+		top: 15px
+		left: 10px
+	&__input
+		flex-basis: 47%
+	&__holder
+		flex-basis: 47%
+		box-sizing: border-box
+		border: 1px solid rgba($foreground-color, .5)
+		display: flex
+		flex-wrap: wrap
+		align-items: flex-start
+		justify-content: flex-start
+		padding: 5px
+		min-height: 50px
+		background-color: #fff
+		overflow: hidden
+	&__item	
+		position: relative
+		padding: 7px 10px
+		padding-right: 20px
+		margin-right: 5px
+		margin-bottom: 5px
+		background-color: $accent-color
+		border-radius: 10px
+		color: #fff
+		cursor: pointer
+		font-size: 13px
+		&::after
+			content: 'x'
+			position: absolute
+			top: 50%
+			margin-top: -6px
+			right: 2px
+			width: 13px
+			height: 13px
+			line-height: 13px
+			font-size: 13px
+			text-align: center
+			border-radius: 50%
+			background-color: $accent-color
+			color: rgba(#fff, .6)
+			transition: background-color .3s ease
+			transition: color .3s ease
+		&:hover
+			&::after
+				background-color: #fff
+				color: #777

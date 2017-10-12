@@ -1,0 +1,17 @@
+if !user
+	.popup.user-auth-popup
+		.popup__content
+			include components/social-auth
+			form.form#auth-form
+				h3.title.user-auth-popup__title Регистрация
+				input.input#username(name="username" type="username", placeholder="Ваше имя пользователя")
+				input.input#email(name="email" type="email", placeholder="Ваш E-Mail")
+				input.input#password(name="password" type="password", placeholder="Ваш пароль")
+				input.input#confirmPassword(name="confirmPassword" type="password", placeholder="Подтвердите пароль")
+				button.btn.user-auth-popup__btn Войти
+			.btn_hide-popup
+			a.user-auth-popup__link(href="#") Забыли пароль?
+			form.form.user-auth-popup__forgot-form#forgot-form(method="POST", action="/account/forgot")
+				h3.title Восстановление пароля
+				input.input#email(name="email" type="email", placeholder="Ваш E-Mail")
+				button.btn.user-auth-popup__btn Восстановить

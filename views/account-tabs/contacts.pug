@@ -1,0 +1,30 @@
+.profile-contacts
+	form#profile.form(action="/profile/update" method="POST")
+		.form-group
+			i.material-icons account_box
+			input.input#surname(type="text" name="surname" placeholder="Ваша фамилия")
+		.form-group
+			i.material-icons account_box
+			input.input#name(type="text" name="name" placeholder="Ваше имя")
+		.form-group
+			i.material-icons email
+			input.input#email(type="email" name="email" placeholder="Ваш Email" )
+		.form-group
+			i.material-icons phone_iphone
+			input.input#phone(type="text" name="phone" placeholder="Ваш номер телефона" )
+		.form-group.form-group_1
+			i.material-icons location_on
+			input.input#location(type="text" name="location" placeholder="Ваш адрес" )
+		button.btn.btn_small.btn_center Сохранить
+	form#change-password.form(action="/auth/password/change" method="POST")
+		h3.title.title_small Смена пароля
+		.form-group.form-group_1
+			i.material-icons vpn_key
+			input.input#oldPassword(type="password" name="oldPassword" placeholder="Ваш старый пароль")
+		.form-group.form-group_1
+			i.material-icons vpn_key
+			input.input#password(type="text" name="password" placeholder="Ваш новый пароль")
+		.form-group.form-group_1
+			i.material-icons vpn_key
+			input.input#confirmPassword(type="password" name="confirmPassword" placeholder="Подтвердите пароль")
+		button.btn.btn_small.btn_center Сохранить

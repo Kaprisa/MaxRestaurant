@@ -1,0 +1,12 @@
+section.counters.section_bg(style="background-image: url(/images/counter-bg.jpg)")
+	h2.title
+		span.title__text.title__text_white.title__text_font-garden Счетчики
+		span.title__text.title__text_accent У нас очень вкусно
+		img.title__img(src="/images/surprize-chef.png")
+	- const counters = [{ "img": "counter-ic1", "count": 4576, "name": "Курица"}, { "img": "counter-ic2", "count": 3795, "name": "Жареная рыба"}, { "img": "counter-ic3", "count": 572, "name": "Блюда от шефа"}, { "img": "counter-ic4", "count": 1678, "name": "Супы"}]
+	ul.counters__list
+		each counter in counters
+			li.counters__item
+				img.counters__img(src=`/images/${counter.img}.png`)
+				span.counters__count= counter.count
+				span.counters__name= counter.name

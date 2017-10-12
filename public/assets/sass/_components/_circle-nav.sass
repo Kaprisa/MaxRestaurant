@@ -1,0 +1,13 @@
+.circle-nav
+	display: flex
+	justify-content: center
+	&__item
+		width: 12px
+		height: 12px
+		margin-right: 10px
+		cursor: pointer
+		background-color: $accent-color
+		border-radius: 50%
+		transition: background-color .3s ease
+		&:hover, &_active
+			background-color: darken($accent-color, 15%)

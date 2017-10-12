@@ -1,0 +1,11 @@
+section.team
+	include ../mixins/_title
+	+title('Встречайте наших шефов', 'Наша команда')
+	ul.team__list
+		- const chefs = [{ "img": "team1", "name": "Роберт Каримов", "position": "Управляющий шеф" }, { "img": "team2", "name": "Леонид Мадресе", "position": "Шеф молекулярной кухни" }, { "img": "team3", "name": "Анатолий Безделов", "position": "Рыбный шеф" }, { "img": "team4", "name": "Михаил Дюжинов", "position": "Шеф кондитер" }]
+		each chef in chefs
+			li.team__item(style=`background-image: url(/images/team/${chef.img}.jpg)`)
+				.team__inner
+					span.team__name= chef.name
+					span.team__position= chef.position
+					include ../components/social

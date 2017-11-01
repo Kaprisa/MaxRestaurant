@@ -3,14 +3,14 @@ extends layout
 include mixins/_breadcrumbs
 
 block content
-	if development
-		.error
-			h2.error__status= status
-			p.error__message= message
-			pre.error__stack!= stackHighlighted
-	else
-		main
-			+breadcrumbs('Страница не найдена', { "name": "Главная", "href": "/index.html" }, { "name": "404", "href": "/error.html" })
-			section.error_404
-				h1.error__status_404 404
-				p.error__text Такой страницы мы не нашли!
+	//if development
+	.error
+		h2.error__status= status
+		p.error__message= message
+		pre.error__stack!= stackHighlighted
+	//else
+	main
+		+breadcrumbs('Страница не найдена', { "name": "Главная", "href": "/" }, { "name": "404", "href": "/error" })
+		section.error_404
+			h1.error__status_404 404
+			p.error__text Такой страницы мы не нашли!

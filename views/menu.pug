@@ -2,13 +2,14 @@ extends layout
 
 include mixins/_title
 include mixins/_breadcrumbs
+include mixins/_menu
 
 block content
-	- const categories = [{ "name": "Завтрак", "desc": "Очень хорошие завтраки" }, { "name": "Обед", "desc": "Горячее и вкусное" }, { "name": "Ужин", "desc": "Изысканные блюда" }]
 	main.menu
-		+breadcrumbs('Меню', { "name": "Главная", "href": "/index.html" }, { "name": "Меню", "href": "/menu.html" })
-		each category in categories
+		+breadcrumbs('Меню', { "name": "Главная", "href": "/" }, { "name": "Меню", "href": "/menu" })
+		if dishCategories 
+		each category, value in Object.keys(dishCategories)
 			section.menu__section
-				+title(category.desc, category.name)
-				include components/menu-list
+				+title(dishCategories[category][0].ShortDescription, category)
+				+menu(dishCategories[category])
 		include partials/booking

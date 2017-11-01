@@ -1,0 +1,21 @@
+if productModel
+	.popup.products-popup
+		.popup__content
+			h4.title Добавить разновидности товара
+			form.form.products-popup__form(method="POST" action=`/product/${productModel.ID}/variety/add`)
+				.form-group
+					i.material-icons add_a_photo
+					label.label_file 
+						span Фото
+						input.input_file#photo(type="file" name="photo" placeholder="Фото")
+				.form-group
+					i.material-icons color_lens
+					input.input#color(type="text" name="color" placeholder="Цвет")
+				.form-group
+					i.material-icons settings_overscan
+					input.input#size.js-number(type="text" name="size" placeholder="Размер")
+				.form-group
+					i.material-icons donut_small
+					input.input#quantity.js-number(type="text" name="quantity" placeholder="Колличество")
+				button.btn.btn_small.btn_center Сохранить
+			span.btn_hide-popup

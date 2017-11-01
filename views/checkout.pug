@@ -4,13 +4,14 @@ include mixins/_breadcrumbs
 
 block content
 	main
-		+breadcrumbs('Оформление заказа', { "name": "Главная", "href": "/index.html" }, { "name": "Заказ", "href": "/checkout.html" })
+		+breadcrumbs('Оформление заказа', { "name": "Главная", "href": "/" }, { "name": "Заказ", "href": "/checkout" })
 		section.checkout
 			.checkout__wrapper
-				.checkout__question.question
-					i.material-icons.question__icon question_answer
-					span.question__text Вы уже являетесь нашим покупателем?
-					a.question__link(href="#") Войдите на сайт
+				if !user
+					.checkout__question.question
+						i.material-icons.question__icon question_answer
+						span.question__text Вы уже являетесь нашим покупателем?
+						a.question__link.question-show-auth-popup(href="#") Войдите на сайт
 				.checkout__question.question
 					i.material-icons.question__icon question_answer
 					span.question__text У вас есть купон?
@@ -24,43 +25,45 @@ block content
 				form.checkout__form.form(method="POST" action="/checkout")
 					.form-group
 						i.material-icons account_box
-						input.input#name(type="text" name="name" placeholder="Ваше имя" )
+						input.input#name(type="text" name="name" placeholder="Ваше имя" value=(profile ? profile.FirstName : ''))
 					.form-group
 						i.material-icons account_box
-						input.input#lastName(type="text" name="lastName" placeholder="Ваша фамилия" )
+						input.input#lastName(type="text" name="lastName" placeholder="Ваша фамилия" value=(profile ? profile.LastName : ''))
 					.form-group
 						i.material-icons email
-						input.input#email(type="email" name="email" placeholder="Ваш Email" )
+						input.input#email(type="email" name="email" placeholder="Ваш Email" value=(user && user.Email ? user.Email : ''))
 					.form-group
 						i.material-icons phone_iphone
-						input.input#phone(type="text" name="phone" placeholder="Ваш номер телефона" )
+						input.input#phone(type="text" name="phone" placeholder="Ваш номер телефона" value=(profile ? profile.Phone : '') )
 					.form-group.form-group_1
 						i.material-icons location_on
-						input.input#location(type="text" name="location" placeholder="Ваш адрес" )
-					.form-group.form-group_1#pass-field(style="display: none")
-						i.material-icons vpn_key
-						input.input#password(type="text" name="password" placeholder="Ваш пароль" )
-					.form-group.form-group_1
-						label.label.label_for-check-radio Создать аккаунт
-						input.input_check#is-create-account(type="checkbox" name="is-create-account")
+						input.input#location(type="text" name="location" placeholder="Ваш адрес" value=(profile ? profile.Address : ''))
+					if !user
+						.form-group.form-group_1#pass-field(style="display: none")
+							i.material-icons vpn_key
+							input.input#password(type="text" name="password" placeholder="Ваш пароль" )
+						.form-group.form-group_1
+							label.label.label_for-check-radio Создать аккаунт
+							input.input_check#is-create-account(type="checkbox" name="is-create-account")
 					button.btn.btn_small.btn_center(type="submit") Заказать
-				h4.title.checkout__title Ваш заказ
-				table.table.checkout__order-table
-					thead
-						tr
-							td Продукт
-							td Цена
-					tbody
-						tr
-							td Черная футболка (2)
-							td $ 50
-						tr
-							td Розовый постер (1)
-							td $ 7
-						tr
-							td.totals__name Подитог
-							td.totals__value#subtotal 57
-						tr
-							td.totals__name Итог
-							td.totals__value#total 57
+				if shoppingCart
+					h4.title.checkout__title Ваш заказ
+					table.table.checkout__order-table
+						thead
+							tr
+								td Продукт
+								td Цена
+						tbody
+							- let total = 0
+							each product in shoppingCart
+								- total += product.Price * product.Count
+								tr
+									td #{product.Name} (#{product.Count})
+									td.money-with-before= product.Price * product.Count
+							tr
+								td.totals__name Подитог
+								td.totals__value#subtotal.money-with-before= total - total * Discount /100
+							tr
+								td.totals__name Итог
+								td.totals__value#total.money-with-before= total
 			include partials/blog-side

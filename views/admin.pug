@@ -4,8 +4,7 @@ include mixins/_breadcrumbs
 
 block content
 	main
-		- const page = 'events'
-		+breadcrumbs('Управление сайтом', { "name": "Главная", "href": "/index.html" }, { "name": "Управление", "href": "/admin.html" })
+		+breadcrumbs('Управление сайтом', { "name": "Главная", "href": "/" }, { "name": "Управление", "href": "/admin" })
 		section.admin
 			.admin__wrapper
 				ul.tabs-navigation
@@ -13,7 +12,8 @@ block content
 					li.tabs-navigation__item: a.tabs-navigation__link(class=( page === 'shop' ? 'tabs-navigation__link_active' : '') href="/admin/shop") Магазин
 					li.tabs-navigation__item: a.tabs-navigation__link(class=( page === 'blog' ? 'tabs-navigation__link_active' : '') href="/admin/blog") Блог
 					li.tabs-navigation__item: a.tabs-navigation__link(class=( page === 'events' ? 'tabs-navigation__link_active' : '') href="/admin/events") События
-				.admin__holder
+					li.tabs-navigation__item: a.tabs-navigation__link(class=( page === 'lists' ? 'tabs-navigation__link_active' : '') href="/admin/lists") Список
+				.tabs__holder
 					case page
 						when 'menu'
 							include admin-tabs/menu
@@ -23,3 +23,5 @@ block content
 							include admin-tabs/blog
 						when 'events'
 							include admin-tabs/events
+						when 'lists'
+							include admin-tabs/lists

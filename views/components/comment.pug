@@ -1,0 +1,12 @@
+if review
+	.comments__item
+		.comments__left
+			img.comments__img(src="/images/photo_default.png")
+			.comments__rating(title=`Оценка ${review.Rating || 0} из 5 звёзд`)
+				= `★`.repeat(review.Rating || 0)
+				= `☆`.repeat(5 - (review.Rating || 0))
+			if user && user.ID === review.UserID
+				i.material-icons.comments__delete-icon(data-id=review.ID) delete
+		.comments__right
+			span.comments__author= review.Name
+			p.comments__text= review.Text

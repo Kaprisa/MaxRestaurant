@@ -1,5 +1,20 @@
 .comments
 	margin-bottom: 50px
+	&__left
+		margin-right: 10px
+		text-align: center
+	&__right
+		flex-basis: 50%
+	&__rating
+		color: #f4ff00
+	&__author
+		font-weight: bold
+		font-size: 14px
+		margin-bottom: 10px
+		margin-right: 20px
+	&__delete-icon
+		cursor: pointer
+		color: #e53935
 	&__title
 		text-transform: uppercase
 		margin-bottom: 15px
@@ -8,8 +23,7 @@
 	&__item
 		display: flex
 		margin-bottom: 20px
-	&__img
-		margin-right: 10px
+		border-bottom: 1px solid rgba($foreground-color, .4)
 	&__text
 		font-size: 14px
 		opacity: .7

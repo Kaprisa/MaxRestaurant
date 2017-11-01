@@ -1,0 +1,7 @@
+each product in products
+	a.shop__item.shop-product(href=`/product/${product.ID}`)
+		img.shop-product__img(src=`/uploads/${product.Photo}`)
+		span.shop-product__name #{product.Category} #{product.Name}
+		span.shop-product__price $ #{product.Price}
+		button.btn_small.btn.add-to-cart(data-id=product.ID) Добавить в корзину
+include ../components/pagination

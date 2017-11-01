@@ -1,29 +1,33 @@
 include ../mixins/_toggle-items
 .menu-editor
-	form.menu-editor__form.form(method="POST" action="/menu/edit")
+	form.menu-editor__form.form(method="POST" action=`/menu/${dish ? `${dish.ID}/edit` : 'add'}`)
 		.form-group.form-group_1
 			i.material-icons restaurant_menu
-			input.input#name(type="text" name="name" placeholder="Название блюда")
+			input.input#productName(type="text" name="productName" placeholder="Название блюда" value=(dish ? dish.Name : ''))
 		.form-group.form-group_1
 			i.material-icons.update-icon#show-category-popup autorenew
 			select.select#category(name="category" placeholder="Категория")
-				option.option Завтрак
-				option.option Обед
-				option.option Ужин
+				if dish
+					option.option= dish.Category
+				if categories
+					each category in categories
+						option.option= category.Name
 		.form-group
 			i.material-icons attach_money
-			input.input#price.js-number(type="text" name="price" placeholder="Цена")
+			input.input#price.js-number(type="text" name="price" placeholder="Цена" value=(dish ? dish.Price : ''))
 		.form-group
 			i.material-icons add_a_photo
 			label.label_file 
 				span Фото
-				input.input_file#photo(type="file" name="photo" placeholder="Фото")
+				input.input_file#photo(type="file" name="photo" placeholder="Фото" data-value=(dish ? dish.Photo : ''))
 		.form-group
 			i.material-icons settings_overscan
-			input.input#size.js-number(type="text" name="size" placeholder="Размер порции (грамм)")
+			input.input#size.js-number(type="text" name="size" placeholder="Размер порции (грамм)" value=(dish ? dish.PortionSize : ''))
 		.form-group
 			i.material-icons all_inclusive
-			input.input#calories.js-number(type="text" name="calories" placeholder="Каллории (на 100 грамм)")
+			input.input#calories.js-number(type="text" name="calories" placeholder="Каллории (на 100 грамм)" value=(dish ? dish.Calories : ''))
 		+toggleItems('ingridient', 'Ингридиент')
 		button.btn.btn_small.btn_center Сохранить
+		if dish
+			button.btn.btn_small#remove(type="button" data-action=`/menu/${dish.ID}`) Удалить
 include ../components/categories-popup

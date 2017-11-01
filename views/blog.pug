@@ -4,13 +4,10 @@ include mixins/_breadcrumbs
 
 block content
 	main.blog
-		+breadcrumbs('Блог', { "name": "Главная", "href": "/index.html" }, { "name": "Блог", "href": "/blog.html" })
+		+breadcrumbs('Блог', { "name": "Главная", "href": "/" }, { "name": "Блог", "href": "/blog" })
 		.blog__inner
-			- const articles = [ 1, 2, 3, 4, 5 ]
-			.blog__articles
-				each article in articles
-					include partials/article
-				include components/pagination
+			.blog__articles#catalog-holder
+				include partials/articlesList
 			include partials/blog-side
 
 

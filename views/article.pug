@@ -5,42 +5,43 @@ include mixins/_search
 
 block content
 	main.blog.article
-		+breadcrumbs('Статья', { "name": "Главная", "href": "/index.html" }, { "name": "Блог", "href": "/blog.html" }, { "name": "Статья", "href": "/article.html" })
+		+breadcrumbs('Статья', { "name": "Главная", "href": "/" }, { "name": "Блог", "href": "/blog" }, { "name": "Статья", "href": "/article" })
 		.article__inner
-			.article__wrapper
-				article.blog__item
-					img.blog__img(src="/public/images/rice.jpg")
-					h3.blog__title Специальное меню с азиатской кухней
-					.blog__info
-						span.blog__time
-							i.material-icons.blog__icon access_time
-							span Опубликовано 05/10/2017, 17:00
-						span.blog__address
-							i.material-icons.blog__icon location_on
-							span Москва, Лермонтова 72/2
-					p.blog__text  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Повстречался живет пунктуация грамматики рот грустный, инициал лучше журчит выйти жаренные силуэт за взгляд единственное послушавшись залетают страна переулка эта заманивший. Решила заманивший коварных пустился ручеек подзаголовок встретил скатился деревни семь рукописи буквоград, свой, своего родного! Семь пунктуация силуэт буквенных рыбного всеми свою там, текста за, диких дал своих наш прямо себя свой эта ему журчит океана свой. Имени о, переписывается буквоград, единственное текстами вопроса текста путь строчка, свой свой маленький необходимыми оксмокс если вскоре заголовок своего но дал сих первую жизни. Которой за рот строчка свой ipsum, безопасную жизни ты пустился раз, лучше диких. Последний строчка себя раз ему коварных если большого запятых вскоре что вершину своих эта повстречался алфавит инициал своих предупреждал вопроса запятой все продолжил, пунктуация сбить свое путь рекламных. Коварный, мир всемогущая свой бросил несколько жаренные. Взобравшись продолжил бросил осталось. Вскоре образ реторический рыбными пустился коварный парадигматическая деревни взгляд путь ты которое рукописи агенство которой власти моей безорфографичный алфавит путь, предупреждал, подпоясал, правилами текстов. Взгляд продолжил, злых текстов запятых вопрос всеми, щеке, за рекламных они журчит жизни предупредила даль обеспечивает, единственное. Всемогущая предупредила вдали рот что инициал, взгляд великий, алфавит маленький рыбного, несколько переулка однажды. Но.
-					.article__quote.quote
-						i.material-icons.quote__icon format_quote
-						p.quote__text  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Раз щеке решила запятых это на берегу текста запятой всемогущая ее алфавит вопрос, ipsum даль журчит вершину, злых ты правилами! Скатился.
-					.article-tags
-						- const aTags = [{ "href": "meet", "name": "Мясо"}, { "href": "fish", "name": "Рыба"}, { "vegetables": "meet", "name": "Овощи"}, { "href": "drinks", "name": "Напитки"}]
-						span.article-tags__title Теги
-						ul.article-tags__list
-							each tag in aTags
-								li.article-tags__item: a.article-tags__link(href=`/blog/tags/${tag.href}`)= tag.name
-					.article-categories
-						- const aCategories = [{ "href": "article.html", "name": "Все о рыбных блюдах"}, { "href": "article.html", "name": "Польза здорового питания"}, { "href": "article.html", "name": "Идеи невероятных завтраков"}]
-						span.article-categories__title Категории
-						ul.article-categories__list
-							each category in aCategories
-								li.article-categories__item: a.article-categories__link(href=`/blog/categories/${category.href}`)= category.name
-					.article__comments.comments
-						h3.comments__title Комментарии (2)
-						.comments__item
-							img.comments__img(src="/public/images/photo_default.png")
-							p.comments__text  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рыбными от всех дал, свой ведущими, сбить то текст ipsum дорогу заголовок своего предупредила языком вопроса страна имеет точках! Меня, возвращайся!
-						.comments__item
-							img.comments__img(src="/public/images/photo_default.png")
-							p.comments__text  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рыбными от всех дал, свой ведущими, сбить то текст ipsum дорогу заголовок своего предупредила языком вопроса страна имеет точках! Меня, возвращайся!
-					include components/comments-form
+			if article
+				.article__wrapper
+					article.blog__item
+						img.blog__img(src=`/uploads/${article.Photo}`)
+						h3.blog__title= article.Name
+						.blog__info
+							span.blog__time
+								i.material-icons.blog__icon access_time
+								span Опубликовано #{h.moment(article.Created).format('L')}
+							span.blog__address
+								i.material-icons.blog__icon location_on
+								span Москва, Лермонтова 72/2
+						p.blog__text= article.Text
+						.article__quote.quote
+							i.material-icons.quote__icon format_quote
+							p.quote__text= article.Quote
+						if articleTags
+							.article-tags
+								span.article-tags__title Теги
+								ul.article-tags__list
+									each tag in articleTags
+										li.article-tags__item: a.article-tags__link(href=`/blog/tags/${tag.Name}`)= tag.Name
+						if articleCategories
+							.article-categories
+								span.article-categories__title Категории
+								ul.article-categories__list
+									each category in articleCategories
+										li.article-categories__item: a.article-categories__link(href=`/blog/categories/${category.Name}`)= category.Name
+						.article__comments.comments
+							h3.comments__title Комментарии (2)
+							.comments__item
+								img.comments__img(src="/images/photo_default.png")
+								p.comments__text  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рыбными от всех дал, свой ведущими, сбить то текст ipsum дорогу заголовок своего предупредила языком вопроса страна имеет точках! Меня, возвращайся!
+							.comments__item
+								img.comments__img(src="/images/photo_default.png")
+								p.comments__text  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рыбными от всех дал, свой ведущими, сбить то текст ipsum дорогу заголовок своего предупредила языком вопроса страна имеет точках! Меня, возвращайся!
+						include components/comments-form
 			include partials/blog-side

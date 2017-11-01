@@ -2,15 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const merge = require('webpack-merge');
-const devserver = require('./webpack/devserver');
+//const devserver = require('./webpack/devserver');
 const sass = require('./webpack/sass');
 const css = require('./webpack/css');
-const pug = require('./webpack/pug');
 const extractCss = require('./webpack/css.extract');
 const uglifyJs = require('./webpack/js.uglify');
 const images = require('./webpack/images');
 const fonts = require('./webpack/fonts');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
     source: path.join(__dirname, 'public/assets'),
@@ -44,81 +42,6 @@ const common = merge([
         plugins: [
             new CleanWebpackPlugin(['public/dist']),
             new webpack.HotModuleReplacementPlugin(),
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/index.pug'),
-                chunks: ['index', 'common'],
-                filename: 'index.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/about.pug'),
-                chunks: ['about', 'common'],
-                filename: 'about.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/menu.pug'),
-                chunks: ['menu', 'common'],
-                filename: 'menu.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/blog.pug'),
-                chunks: ['blog', 'common2'],
-                filename: 'blog.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/reservation.pug'),
-                chunks: ['reservation', 'common'],
-                filename: 'reservation.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/article.pug'),
-                chunks: ['article', 'common2'],
-                filename: 'article.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/gallery.pug'),
-                chunks: ['gallery', 'common'],
-                filename: 'gallery.html'
-            }),
-             new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/product.pug'),
-                chunks: ['product', 'common2'],
-                filename: 'product.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/shop.pug'),
-                chunks: ['shop', 'common2'],
-                filename: 'shop.html'
-            }),
-             new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/cart.pug'),
-                chunks: ['cart', 'common2'],
-                filename: 'cart.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/checkout.pug'),
-                chunks: ['checkout', 'common2'],
-                filename: 'checkout.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/account.pug'),
-                chunks: ['account', 'common2'],
-                filename: 'account.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/contacts.pug'),
-                chunks: ['contacts', 'common'],
-                filename: 'contacts.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/error.pug'),
-                chunks: ['error'],
-                filename: 'error.html'
-            }),
-            new HtmlWebpackPlugin({
-                template: path.join(__dirname, 'views/admin.pug'),
-                chunks: ['admin'],
-                filename: 'admin.html'
-            }),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'common',
                 chunks: ['index', 'menu', 'about', 'reservation', 'gallery', 'contacts']
@@ -129,7 +52,6 @@ const common = merge([
             })
         ],
     },
-    pug(),
     images(),
     fonts()
 ]);
@@ -146,7 +68,7 @@ module.exports = function(env) {
     if (env === 'development'){
         return merge([
             common,
-            devserver(),
+            //devserver(),
             sass(),
             css()
         ])

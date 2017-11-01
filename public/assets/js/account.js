@@ -6,6 +6,10 @@ import popup, { dynamicPopup } from './modules/popup'
 import './modules/money'
 import tabPages from './modules/tabPages'
 import autocomplete from './modules/autocomplete'
+import typeAhead from './modules/search'
+import './modules/reservation'
+
+typeAhead($('.search'))
 
 popup($('.header__book'), $('.book-popup'))
 
@@ -22,45 +26,40 @@ window.onload = function() {
 }
 
 function loadPage() {
-	const { href } = location
-	const page = href.substring(href.lastIndexOf('/') + 1, href.length)
+	const page = location.href.split('/')[4]
 	switch (page) {
-		case 'contacts': {
-			contacts()
+		case 'profile':
+			profile()
 			break
-		}
-		case 'purse': {
+		case 'purse':
 			purse()
 			break
-		}
-		case 'orders': {
+		case 'orders':
 			orders()
 			break
-		}
-		case 'bonus': {
+		case 'bonus':
 			bonus()
 			break
-		}
 	}
 }
 
-const contacts = () => {
+const profile = () => {
 
 	autocomplete($('#location'))
 
 	$('#profile').on('submit', function(e) {
 		e.preventDefault()
 		const data = {
-			name: $('#name').value,
-			lastName: $('#surname').value,
-			phone: $('#phone').value,
-			address: $('#address').value
+			name: this.querySelector('#name').value,
+			lastName: this.querySelector('#surname').value,
+			phone: this.querySelector('#phone').value,
+			address: this.querySelector('#location').value
 		}
 		axios.post(this.action, data).then(res => {
 			this.reset()
 			dynamicPopup({ action: 'success', msg: 'Ваш профиль успешно обновлён!' })
 		}).catch( err => {
-			dynamicPopup({ action: 'error', msg: 'Ошибка обновления профиля...!' })
+			dynamicPopup({ action: 'error', msg: 'Ошибка обновления профиля :(' })
 			console.error(err)
 		})
 	})
@@ -68,9 +67,9 @@ const contacts = () => {
 	$('#change-password').on('submit', function(e) {
 		e.preventDefault()
 		const data = {
-			oldPassword: $('#oldPassword').value,
-			password: $('#password').value,
-			confirmPassword: $('#confirmPassword').value
+			oldPassword: this.querySelector('#oldPassword').value,
+			password: this.querySelector('#password').value,
+			confirmPassword: this.querySelector('#confirmPassword').value
 		}
 		axios.post(this.action, data).then(res => {
 			this.reset()

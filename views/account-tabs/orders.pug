@@ -14,8 +14,7 @@
 				each order, index in orders
 					tr
 						td= index + 1
-						td= order.Created
-						//td= h.moment(order.Created).format('L')
+						td= h.moment(order.Created).format('L')
 						td $ #{order.Total || 0}
 						td= order.Status || 'На складе'
 						td.show-order-details-popup(data-id=order.ID) Посмотреть

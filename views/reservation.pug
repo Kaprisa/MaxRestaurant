@@ -5,8 +5,8 @@ include mixins/_title
 
 block content
 	main
-		+breadcrumbs('Бронирование', { "name": "Главная", "href": "/index.html" }, { "name": "Бронирование", "href": "/reservation.html" })
-		section.reservation(style="background-image: url(/public/images/reservation.png)")
+		+breadcrumbs('Бронирование', { "name": "Главная", "href": "/" }, { "name": "Бронирование", "href": "/reservation" })
+		section.reservation(style="background-image: url(/images/reservation.png)")
 			+title('Выберите ваш стол', 'Бронирование')
 			include components/reservation-form
 		include partials/subscribe

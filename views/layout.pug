@@ -12,11 +12,12 @@ html
 		include partials/header
 		block content
 		include partials/footer
-		script(src=`https://maps.googleapis.com/maps/api/js?key=AIzaSyBHATj8Iaht38T3dEoL_WKqh7vBLGKiOC4&libraries=places`)
 		block scripts
 			if name
-				//if name === 'contacts'
+				if (['account', 'checkout', 'admin', 'contacts' ].includes(name))
 					script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
-				if (['index'].includes(name))
+				if (['index', 'menu', 'about', 'reservation', 'gallery', 'contacts'].includes(name))
 					script(src='/dist/js/common.js')
+				else if (['blog', 'article', 'shop', 'product', 'cart', 'checkout', 'account'].includes(name))
+					script(src='/dist/js/common2.js')
 				script(src=`/dist/js/${name}.js`)

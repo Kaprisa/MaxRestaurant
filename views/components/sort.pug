@@ -1,6 +1,6 @@
 .sort
 	span.sort__title Сортировка:
-	- const sortList = [{'name': 'По умолчанию', 'data': 'created'},{'name': 'По цене', 'data': 'price'},{'name': 'По популярности', 'data': 'stars'}]
+	- const sortList = [{'name': 'По умолчанию', 'data': 'ID'},{'name': 'По цене', 'data': 'Price'},{'name': 'По популярности', 'data': 'Rating'}]
 	span.sort__current.dropdown__text(data-sort=sort) По умолчанию 
 	ul.sort__dropdown.dropdown.js-dropdown
 		each item in sortList

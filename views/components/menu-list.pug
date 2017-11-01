@@ -2,7 +2,7 @@ ul.menu__list
 	- const menu = [{ "img": "1", "name": "Жареная свинина с картофелем фри", "price": 55 }, { "img": "2", "name": "Овощной микс с томатами", "price": 69 }, { "img": "3", "name": "Рыба в панировке", "price": 43 }, { "img": "4", "name": "Блинчики с клубникой", "price": 39 }, { "img": "5", "name": "Яйца с грибами и сыром", "price": 27 }, { "img": "1", "name": "Жареная свинина с картофелем фри", "price": 55 }, { "img": "2", "name": "Овощной микс с томатами", "price": 69 }, { "img": "3", "name": "Рыба в панировке", "price": 43 }, { "img": "4", "name": "Блинчики с клубникой", "price": 39 }, { "img": "5", "name": "Яйца с грибами и сыром", "price": 27 }]
 	each item in menu
 		li.menu__item
-			img.menu__img(src=`/public/images/menu/${item.img}.jpg`)
+			img.menu__img(src=`/images/menu/${item.img}.jpg`)
 			.menu__text-wrapper
 				span.menu__name= item.name
 				span.menu__consist Помидор, огурец, масло, зелень

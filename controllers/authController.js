@@ -15,7 +15,7 @@ exports.afterLogin = (req, res) =>  {
 exports.logout = (req, res) => {
 	req.logout()
 	req.session.destroy()
-	res.redirect('/')
+	res.redirect('back')
 }
 
 exports.isLoggedIn = (req, res, next) => {
@@ -55,7 +55,7 @@ exports.forgot = async (req, res) => {
 		resetURL,
 		filename: 'reset-password'
 	})
-		res.send('Вам отправлена инструкция восстановления аккаунта')
+	res.send('Вам отправлена инструкция восстановления аккаунта')
 }
 
 exports.reset = async (req, res) => {
@@ -81,20 +81,20 @@ exports.confirmedPassword = (req, res, next) => {
 
 exports.update = async (req, res) => {
 	const query = 
-		`SELECT ID FROM Users
+		`SELECT ID, Role, Email FROM Users
 		 WHERE ResetPasswordToken = '${req.params.token}' AND ResetPasswordExpires > ${Date.now()}
 		`
-	const { recordset: [ { ID } ] } = await new sql.Request().query(query)	
-	if (!ID) {
+	const { recordset: [ user ] } = await new sql.Request().query(query)	
+	if (!user) {
 		res.send('Сброс пароля не валиден или истёк')
 		return
 	}
 	const setPasswordQuery = 
 		`UPDATE Users 
 		 SET Password = HASHBYTES('SHA2_512', '${req.body.password}'), ResetPasswordToken = NULL, ResetPasswordExpires = NULL
-		 WHERE ID = ${ ID }`
-	await new sql.Request().query(query)
-	req.login(ID, (err) => {
+		 WHERE ID = ${ user.ID }`
+	await new sql.Request().query(setPasswordQuery)
+	req.login(user, (err) => {
 		if (err) {
 			console.error(err)
 		}

@@ -9,7 +9,7 @@ function addMoney() {
 		const data = {
 			money: $('#deposit').value
 		}
-		axios.post('/api/deposit', data).then(res => {
+		axios.post('/api/money/add', data).then(res => {
 			$('#deposit').value = ''
 			hidePopup($('.money-popup'))
 			document.querySelectorAll('.money').forEach(item => {

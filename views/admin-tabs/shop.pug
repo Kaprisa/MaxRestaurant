@@ -1,44 +1,23 @@
 .shop-editor
-	form.shop-editor__form.form(method="POST" action="/product/edit")
+	form.shop-editor__form.form(method="POST" action=`/product/${productModel ? `${productModel.ID}/edit` : 'add'}`)
 		.form-group.form-group_1
 			i.material-icons bubble_chart
-			input.input#name(type="text" name="name" placeholder="Название товара")
+			input.input#productName(type="text" name="productName" placeholder="Название товара" value=(productModel ? productModel.Name : ''))
 		.form-group.form-group_1
 			i.material-icons opacity
-			input.input#type(name="type" placeholder="Тип")
+			input.input#type(name="type" placeholder="Тип" value=(productModel ? productModel.Type : ''))
 		.form-group.form-group_1
 			i.material-icons style
-			input.input#category(name="category" placeholder="Категория")
+			input.input#category(name="category" placeholder="Категория" value=(productModel ? productModel.Category : ''))
 		.form-group.form-group_1
 			i.material-icons attach_money
-			input.input#price.js-number(type="text" name="price" placeholder="Цена")
+			input.input#price.js-number(type="text" name="price" placeholder="Цена" value=(productModel ? productModel.Price : ''))
 		.form-group.form-group_1
-			textarea.textarea#desc(name="desc" placeholder="Описание")
-		- const productKind = 1
-		if productKind
+			textarea.textarea#desc(name="desc" placeholder="Описание" value=(productModel ? productModel.Description : ''))
+		if productModel
 			button.btn.btn_small Сохранить
 			button.btn.btn_small#show-products-popup(type="button") Добавить разновидности
-			button.btn.btn_small(type="button") Удалить
+			button.btn.btn_small#remove(type="button" data-action=`/shop/model/${productModel.ID}`) Удалить
 		else
 			button.btn.btn_small.btn_center Сохранить
-.popup.products-popup
-	.popup__content
-		h4.title Добавить разновидности товара
-		form.form.products-popup__form(method="POST" action="/product/variety/add")
-			.form-group
-				i.material-icons add_a_photo
-				label.label_file 
-					span Фото
-					input.input_file#photo(type="file" name="photo" placeholder="Фото")
-			.form-group
-				i.material-icons color_lens
-				input.input#color(type="text" name="color" placeholder="Цвет")
-			.form-group
-				i.material-icons settings_overscan
-				input.input#size.js-number(type="text" name="size" placeholder="Размер")
-			.form-group
-				i.material-icons donut_small
-				input.input#quantity.js-number(type="text" name="quantity" placeholder="Колличество")
-			button.btn.btn_small.btn_center Сохранить
-		span.btn_hide-popup
-//include ../components/categories-popup решила что буду так добавлять, если нету
+include ../components/products-popup

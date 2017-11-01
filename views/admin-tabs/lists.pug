@@ -1,0 +1,11 @@
+.admin-lists
+	h2.admin-lists__title= title
+	if list
+		ul.admin-lists__list
+			each item in list
+				li.admin-lists__item
+					span.admin-lists__name= item.Name
+					.admin-lists__icons
+						a.admin-lists__link(href=`/admin/${l}/${item.ID}`)
+							i.material-icons.admin-lists__icon.admin-lists__icon_edit edit
+						i.material-icons.admin-lists__icon.admin-lists__icon_delete(data-action=`/${l}/${item.ID}`) delete

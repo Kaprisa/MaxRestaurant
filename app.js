@@ -9,7 +9,7 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const promisify = require('es6-promisify')
 const expressValidator = require('express-validator')
-const routes = require('./routes/index')
+const routes = require('./routes')
 const helpers = require('./helpers')
 const errorHandlers = require('./handlers/errorHandlers')
 require('./handlers/passport')
@@ -58,6 +58,19 @@ app.use( async (req, res, next) => {
   res.locals.h = helpers
   res.locals.user = req.user || null
   res.locals.currentPath = req.path
+  if (['articles', 'blog', 'checkout', 'cart', 'account'].some(item => req.path.includes(item))) {
+    const categoriesQuery =
+      ` SELECT DISTINCT(C.ID), C.Name FROM ArticleCategories C
+        JOIN ArticlesAndCategories ON C.ID = ArticlesAndCategories.CategoryID
+      `
+    const tagsQuery =
+      ` SELECT DISTINCT TOP 10 T.ID, T.Name FROM ArticleTags T
+        JOIN ArticlesAndTags ON T.ID = ArticlesAndTags.TagID
+      `
+    const [ { recordset: categories }, { recordset: tags } ] = await Promise.all([ new sql.Request().query(categoriesQuery), new sql.Request().query(tagsQuery) ])
+    res.locals.categories = categories
+    res.locals.tags = tags
+  }
   next()
 })
 

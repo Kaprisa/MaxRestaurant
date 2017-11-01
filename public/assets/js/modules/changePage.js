@@ -1,7 +1,7 @@
 import { $$, $ } from './bling'
 import axios from 'axios'
 
-function changePageReq(navParentClass, page = 1, sort = 'created', hst = true) {
+function changePageReq(navParentClass, page = 1, sort = 'ID', hst = true) {
 	axios.get(`${page}?axs=1&sort=${sort}`).then(res => {
 		if (!res.data) return
 		$('#catalog-holder').innerHTML = res.data
@@ -17,7 +17,7 @@ function changePage(navParentClass) {
 	if (!$(`.${navParentClass}`)) return
 		$$(`.${navParentClass}__link`).on('click', function(e){
 			e.preventDefault()
-			const sort = $('.sort__current').getAttribute('data-sort')
+			const sort = $('.sort__current') ? $('.sort__current').getAttribute('data-sort') : 'ID'
 			const href = this.getAttribute('href')
 			changePageReq(navParentClass, href, sort)
 		})
@@ -30,7 +30,7 @@ function changePage(navParentClass) {
 function sort(){
 	const items = $$('.js-sort-item')
 	items.on('click', function() {
-		const page = $('.pagination__link_active') ? $('.pagination__link_active').innerHTML : 1
+		const page = location.href.substring(location.href.indexOf('/', location.href.length - 1))
 		changePageReq('pagination', page, this.getAttribute('data-sort'))
 	})	
 }

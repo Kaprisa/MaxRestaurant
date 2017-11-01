@@ -1,3 +1,5 @@
+import { numValidator } from './inputValidator'
+
 function changeValue(input, value) {
 	if (value < 1) return
 	input.value = value
@@ -12,6 +14,7 @@ function changeTotal( value, input, el) {
 }
 
 function counter(counter , num = 0, el = null) {
+	numValidator(counter)
 	const inc = counter.querySelector('#inc')
 	const dec = counter.querySelector('#dec')
 	let input = counter.querySelector('#count')

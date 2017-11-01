@@ -1,0 +1,9 @@
+mixin menu(list)
+	ul.menu__list
+	each item in list
+		li.menu__item
+			img.menu__img(src=`/uploads/${item.Photo}`)
+			.menu__text-wrapper
+				span.menu__name= item.Name
+				span.menu__consist= item.IngridientsString
+			span.menu__price $ #{item.Price}

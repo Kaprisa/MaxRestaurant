@@ -13,7 +13,7 @@ function typeAhead(search, searchClassName = 'search', action = '/api/search', h
 	const searchInput = search.querySelector(`.${searchClassName}__input`)
 	const searchResults = search.querySelector(`.${searchClassName}__results`)
 	searchInput.on('input', function() {
-		if (!this.value){
+		if (!this.value) {
 			searchResults.style.display = 'none'
 			return
 		}

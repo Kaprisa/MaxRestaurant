@@ -1,10 +1,20 @@
-.pagination
-	- const [ page, pages ] = [ 2, 3 ]
-	.pagination__pages
-		a.pagination__link(href=`/blog/pages/${page - 1}`) <
-		- for (let i = 1 ; i < pages + 1 ; i ++) {
-			a.pagination__link(class=( i == page ? 'pagination__link_active' : '') href=`/blog/pages/${i}`)= i
-		-	}
-		a.pagination__link(href=`/blog/pages/${Number(page)+1}`) >
-	.pagination__info
-		span.pagination__text Страница #{page} из #{pages}
+if pages > 1
+	.pagination
+		if name === 'shop'
+			.pagination__pages
+				a.pagination__link(href=`/shop/pages/${page - 1}${ type === 0 ? '' : `/${type}` }${ category === 0 ? '' : `/${category}` }`) <
+				- for (let i = 1 ; i < pages + 1 ; i ++) {
+					a.pagination__link(class=( i == page ? 'pagination__link_active' : '') href=`/shop/pages/${i}${ type === 0 ? '' : `/${type}` }${ category === 0 ? '' : `/${category}` }`)= i
+				-	}
+				a.pagination__link(href=`/shop/pages/${Number(page)+1}${ type === 0 ? '' : `/${type}` }${ category === 0 ? '' : `/${category}` }`) >
+			.pagination__info
+				span.pagination__text Страница #{page} из #{pages}
+		else
+			.pagination__pages
+				a.pagination__link(href=`/blog/pages/${page - 1}${category === 0 ? '' : `/${category}`}`) <
+				- for (let i = 1 ; i < pages + 1 ; i ++) {
+					a.pagination__link(class=( i == page ? 'pagination__link_active' : '') href=`/blog/pages/${i}${category === 0 ? '' : `/${category}`}`)= i
+				-	}
+				a.pagination__link(href=`/blog/pages/${Number(page)+1}${category === 0 ? '' : `/${category}`}`) >
+			.pagination__info
+				span.pagination__text Страница #{page} из #{pages}

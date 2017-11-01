@@ -4,10 +4,9 @@ include mixins/_breadcrumbs
 
 block content
 	main
-		+breadcrumbs('Корзина', { "name": "Главная", "href": "/index.html" }, { "name": "Корзина", "href": "/cart.html" })
+		+breadcrumbs('Корзина', { "name": "Главная", "href": "/" }, { "name": "Корзина", "href": "/cart" })
 		section.cart
 			.cart__wrapper
-				- const cart = [{"img": "1_small", "ID": "1", "name": "Толстовка розовая", "price": "20"}, {"img": "2_small", "ID": "2", "name": "Толстовка серая", "price": "25"}]
 				.cart__inner
 					table.table.cart__table
 						thead
@@ -19,15 +18,17 @@ block content
 								td Итого
 								td Удалить
 						tbody
-							each product in cart
+							- let total = 0
+							each product in shoppingCart
+								- total += product.Price * product.Count
 								tr
 									td
-										img.cart__product-photo(src=`/public/images/shop/${product.img}.jpg`)
-									td= product.name
-									td $ #{product.price}
+										img.cart__product-photo(src=`/uploads/${product.Photo}`)
+									td= product.Name
+									td.product-price.money-with-before #{product.Price}
 									td
 										include components/counter
-									td $ #{product.price}
+									td.product-total-price.money-with-before #{product.Price * product.Count}
 									td
 										i.material-icons.cart__product-delete(data-id=product.ID) delete
 					.cart__bottom-line
@@ -41,19 +42,18 @@ block content
 					table.table.totals__table
 						tr
 							td.totals__name Подитог
-							td.totals__value#subtotal 33
+							td.totals__value#subtotal= total - total * (Discount / 100)
 						tr
 							td.totals__name Итог
-							td.totals__value#total 33
+							td.totals__value#total= total
 					button.btn.btn_small.btn_center Оформить заказ
 				.same-products
 					h3.title Вам может также понравиться
-					- const products = [{"img": "1", "ID": "1", "name": "Толстовка розовая", "price": "20"}, {"img": "2", "ID": "2", "name": "Толстовка серая", "price": "25"}, {"img": "3", "ID": "3", "name": "Толстовка черная", "price": "15"}]
 					.same-products__list
-						each product in products
-							a.same-products__item.shop-product(href=`/shop/products/${product.ID}`)
-								img.shop-product__img(src=`/public/images/shop/${product.img}.jpg`)
-								span.shop-product__name= product.name
-								span.shop-product__price $ #{product.price}
-								button.btn_small.btn#btn-add-to-cart(data-id=product.ID) Добавить в корзину
+						each product in otherProducts
+							a.same-products__item.shop-product(href=`/product/${product.ID}`)
+								img.shop-product__img(src=`/uploads/${product.Photo}`)
+								span.shop-product__name= product.Name
+								span.shop-product__price $ #{product.Price}
+								button.btn_small.btn.add-to-cart(data-id=product.ID) Добавить в корзину
 			include partials/blog-side

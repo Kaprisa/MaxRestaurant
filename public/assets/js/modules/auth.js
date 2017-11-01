@@ -6,7 +6,7 @@ function showError(err, action) {
 	const message = document.createElement('div')
 	message.className = 'user-auth-popup__error fade-in'
 	message.innerHTML = (action === 'login') ? 'Неверное имя пользователя или пароль' : 'Ошибка регистрации'
-	$('#username').parentNode.insertBefore(message, $('#username'))
+	$('#username').parentNode.parentNode.insertBefore(message, $('#username').parentNode)
 	setTimeout(() => {
 		message.classList.remove('fade-in')
 		message.classList.add('slide_up')
@@ -24,7 +24,7 @@ function authServ(action, popup, data = {}, msg = 'Вы успешно авто�
 				showError(err, action)
 			})
 		}
-		//$('.user__holder').innerHTML = res.data
+		$('.user-block').innerHTML = '<a class="user-block__link" href="/profile">Профиль</a>'
 		hidePopup(popup)
 		dynamicPopup({ action: 'success', msg })
 	}).catch(err => {
